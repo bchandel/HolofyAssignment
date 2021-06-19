@@ -31,15 +31,22 @@ class BookService {
 
   async updateBook(id, bookData) {
     let criteria = {uuid: id};
-    let update = {
-        $set : {
-            "name" : bookData.name,
-            "authorName" : bookData.authorName,
-            "releaseDate": moment(bookData.releaseDate)
-        }
-    };
-    let book = await bookRepo.findOneAndUpdate(this.db,criteria,update);
-    return book;
+    let getBook =  await bookRepo.getBooksByUuid(this.db,id);
+    
+    if(getBook){
+        let update = {
+            $set : {
+                "name" : bookData.name,
+                "authorName" : bookData.authorName,
+                "releaseDate": moment(bookData.releaseDate)
+            }
+        };
+        let book = await bookRepo.findOneAndUpdate(this.db,criteria,update);
+        return book;
+    }else{
+        return `No book found with this BookUuid ${id}, Please make sure you have provided correct BookUuid`
+    }
+    
   }
 
   async deleteBook(id) { 

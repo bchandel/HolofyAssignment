@@ -31,11 +31,11 @@ const updateBookDetails = async (req, resp) => {
         return res.status(400).json({message: 'Bad Request.Missing required parameter (bookUuid)'});
     }
     const book = await books.bookService(req.db).updateBook(req.params.bookUuid, req.body);
-
+    // console.log("book update",book)
     if(book.ok ==1){
       return resp.status(200).json({success: true, message:"Book updated successfully." });
     }else{
-      return resp.status(200).json({success:false, message: err.message });
+      return resp.status(200).json({success:false, message: book });
     }
     
   } catch (err) {
