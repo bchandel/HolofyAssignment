@@ -1,0 +1,27 @@
+{
+  "name": "holofy-assignment",
+  "version": "1.0.0",
+  "description": "webserver",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "webserver"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
+  "author": "Balkaran Chandel<chandel0810@gmail.com>",
+  "appPath": "./",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "memory-cache": "^0.2.0",
+    "moment": "^2.20.1",
+    "mongoose": "^5.1.6"
+  }
+}
