@@ -63,7 +63,7 @@ const addBook = async (req, resp) => {
     try {
       const book = await books.bookService(req.db).addBook(req.body);
      
-      return resp.json({success:true, data: book });
+      return resp.status(200).json({success:true, data: book });
     } catch (err) {
       console.error(err);
       return resp.status(500).json({ message: err.message });
